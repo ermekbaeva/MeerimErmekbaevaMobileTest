@@ -23,7 +23,6 @@ public class webMobileTests extends BaseTest {
         new WebDriverWait(getDriver(), 10).until(
                 wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
-        System.out.println(getResults());
         assert (getResults().stream().anyMatch(str -> str.trim().contains(searchData)));
 
         // Log that test finished
