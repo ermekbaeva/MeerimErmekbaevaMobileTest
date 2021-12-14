@@ -11,7 +11,7 @@ import static com.epam.ex1.pageObjects.WebPageObject.*;
 public class webMobileTests extends BaseTest {
 
     @Parameters({"searchData"})
-    @Test(groups = {"web"}, description = "Make sure that we've opened IANA homepage")
+    @Test(groups = {"web"}, description = "Make sure that we've get valid search results")
     public void simpleWebTest(String searchData) throws InterruptedException, NoSuchFieldException, IllegalAccessException, InstantiationException {
         getDriver().get("http://www.google.com"); // open Google homepage
 
