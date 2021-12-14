@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.epam</groupId>
+    <artifactId>MeerimErmekbaevaMobileTest</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.1.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.file}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <!--<ts.appium>http://localhost:4723/wd/hub</ts.appium>-->
+                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <token>3TPIDN0MCoyayKM14X1d110S90Ycfy8nMDOQYU+UYrFAKivjNIdbHwhQotqz6fFLHGxIDUCAGIH3weWcv02dDrJZ23ZItu+I0H7u5l/w2qTKVQ1TI2XVtlnEf9Y5PDncBrQ0bgq7QOYj7Ig+W3hw1u9ikEZ2VHtBM7uG10l1YE5tMe9xfrt+3IPVs79soL+9cxkJjZpVPGDUdB66nggHVVwyjD+6zTl8hb9pNNoyL5lOqDn0w2OLeJXoeCIo1RLgXzUc7BXfL2Azim05mA/L2jnPveSweA2ZWd/IdIE90cAWvUYiNQdg8/8ztF/twmlEEKOcOqegXNIt2WSMqduqh0VL6YUyO1GXT17O73TAXrMgT+G5mieNO7ZQ9xTezNzGG4a+CVZDtypJXntgRiQ3E7NP2eyXV7jL8Sq27JOw8kp/NcCJmaYuPJLcKJeaobLUmpc9TWOyFHaBLZ08bjeVDmn7/2etjCIh9Ubc/4ANhborbO4wa/BqFcKwsmLhjhiXBQqM8cC2wxZuiU7FI0ERQ9HxGcLztlfEf7X9geMRbaL9uMwixiUbv5xxnws0opcY3Jy+1kFQReo8mF8T5/akRBJCwwdgYOrc9BozStHH0Jg3R0kF3pX0oaEO4VrNnFdr8/stN0zg3Pk5cmPGHRro5KTAd3gc/oTtl3aJjPl7QkKyTYc1iwGGTv706deIkFT13hLZbGaiD6XDpnArgTkemq2/RDqeTxf9lFjatPLhZQrlPFtfgm0Rc0hwnI/pG90XKxeu2EeLv/8eYO2VXfgiiEfIlPJUW0aw1FIcwjRJR68mGmyybb3qtFmKqkFtx/vgP72tG4pzSDugWqa79SQIlDUnQdjt1ZBpTNLmSgMJToUEJXimpTBCcNkJI4dLejoYG0Q51+ahZgfJv02IBRN7KzQ</token>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/com.epam.ex1/nativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>web</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/com.epam.ex1/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>cloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/com.epam.ex2/cloudWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+    </profiles>
+</project>
