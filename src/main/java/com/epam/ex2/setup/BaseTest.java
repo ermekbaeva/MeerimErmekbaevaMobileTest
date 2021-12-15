@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest implements IDriver {
@@ -31,7 +32,7 @@ public class BaseTest implements IDriver {
                       @Optional("") String appPackage, @Optional("") String appActivity,
                       @Optional("") String bundleId) throws Exception {
         System.out.println("Before: app type - " + appType);
-        setAppiumDriver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId);
+        setAppiumDriver(platformName, deviceName, udid, browserName, app,  appPackage, appActivity, bundleId);
         setPageObject(appType, appiumDriver);
     }
 
@@ -49,17 +50,18 @@ public class BaseTest implements IDriver {
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("udid", udid);
 
+        capabilities.setCapability("browserName", browserName);
+        capabilities.setCapability("chromedriverDisableBuildCheck", "true");
+
         if (app.endsWith(".apk")) {
             capabilities.setCapability("app", (new File(app)).getAbsolutePath());
         }
 
-        capabilities.setCapability("browserName", browserName);
-        capabilities.setCapability("chromedriverDisableBuildCheck", "true");
 
-        capabilities.setCapability("appPackage",appPackage);
-        capabilities.setCapability("appActivity",appActivity);
+        capabilities.setCapability("appPackage", appPackage);
+        capabilities.setCapability("appActivity", appActivity);
 
-        capabilities.setCapability("bundleId",bundleId);
+        capabilities.setCapability("bundleId", bundleId);
 
         try {
             appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);

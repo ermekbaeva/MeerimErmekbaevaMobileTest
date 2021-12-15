@@ -13,7 +13,8 @@ public class webMobileTests extends BaseTest {
 
     @Parameters({"searchData"})
     @Test(groups = {"web"}, description = "Make sure that we've opened IANA homepage")
-    public void simpleWebTest(String searchData) throws InterruptedException, NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public void simpleWebTest(String searchData) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+        System.out.println("begin");
         getDriver().get("http://www.google.com"); // open Google homepage
 
         // Make sure that page has been loaded completely

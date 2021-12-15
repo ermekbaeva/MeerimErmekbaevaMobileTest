@@ -12,7 +12,7 @@
     <test name="iOS native tests">
         <groups>
             <run>
-                <include name="nativeiOS"/>
+                <include name="native"/>
             </run>
         </groups>
         <packages>
