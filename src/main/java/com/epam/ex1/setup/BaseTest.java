@@ -3,7 +3,7 @@ package com.epam.ex1.setup;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import com.epam.ex1.pageObjects.PageObject;
+import com.epam.ex1.PageObjects.PageObject;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -13,15 +13,15 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest implements IDriver {
 
     private static AppiumDriver appiumDriver; // singleton
-    static IPageObject po;
+    static IPageObject pageObject;
 
     @Override
     public AppiumDriver getDriver() {
         return appiumDriver;
     }
 
-    public static IPageObject getPo() {
-        return po;
+    public static IPageObject getPageObject() {
+        return pageObject;
     }
 
     @Parameters({"platformName", "appType", "deviceName", "browserName", "app"})
@@ -63,7 +63,6 @@ public class BaseTest implements IDriver {
     }
 
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
-        po = new PageObject(appType, appiumDriver);
+        pageObject = new PageObject(appType, appiumDriver);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.epam.ex1.pageObjects;
+package com.epam.ex1.PageObjects;
 
 import com.epam.ex1.setup.BaseTest;
 import io.appium.java_client.AppiumDriver;
@@ -37,22 +37,22 @@ public class NativePageObject extends BaseTest {
     }
 
     public static void registerNewUser(String email, String username, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        getPo().getWelement("registerButton").click();
-        getPo().getWelement("emailInput").sendKeys(email);
-        getPo().getWelement("usernameInput").sendKeys(username);
-        getPo().getWelement("passwordInput").sendKeys(password);
-        getPo().getWelement("confirmPasswordInput").sendKeys(password);
-        getPo().getWelement("confirmAgreementsCheckbox").click();
-        getPo().getWelement("registerNewAccButton").click();
+        getPageObject().getWebElement("registerButton").click();
+        getPageObject().getWebElement("emailInput").sendKeys(email);
+        getPageObject().getWebElement("usernameInput").sendKeys(username);
+        getPageObject().getWebElement("passwordInput").sendKeys(password);
+        getPageObject().getWebElement("confirmPasswordInput").sendKeys(password);
+        getPageObject().getWebElement("confirmAgreementsCheckbox").click();
+        getPageObject().getWebElement("registerNewAccButton").click();
     }
 
     public static void login(String email, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        getPo().getWelement("loginEmailInput").sendKeys(email);
-        getPo().getWelement("loginPasswordInput").sendKeys(password);
-        getPo().getWelement("signInButton").click();
+        getPageObject().getWebElement("loginEmailInput").sendKeys(email);
+        getPageObject().getWebElement("loginPasswordInput").sendKeys(password);
+        getPageObject().getWebElement("signInButton").click();
     }
 
     public static WebElement getDescriptionOfPage() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        return getPo().getWelement("pageDescription");
+        return getPageObject().getWebElement("pageDescription");
     }
 }

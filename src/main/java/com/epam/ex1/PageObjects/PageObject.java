@@ -1,4 +1,4 @@
-package com.epam.ex1.pageObjects;
+package com.epam.ex1.PageObjects;
 
 import com.epam.ex1.setup.IPageObject;
 import io.appium.java_client.AppiumDriver;
@@ -12,20 +12,21 @@ public class PageObject implements IPageObject {
 
     public PageObject(String appType, AppiumDriver appiumDriver) throws Exception {
 
-        System.out.println("Current app type: "+appType);
-        switch(appType){
+        System.out.println("Current app type: " + appType);
+        switch (appType) {
             case "web":
                 somePageObject = new WebPageObject(appiumDriver);
                 break;
             case "native":
                 somePageObject = new NativePageObject(appiumDriver);
                 break;
-            default: throw new Exception("Can't create a page object for "+appType);
+            default:
+                throw new Exception("Can't create a page object for " + appType);
         }
     }
 
     @Override
-    public WebElement getWelement(String weName) throws NoSuchFieldException, IllegalAccessException {
+    public WebElement getWebElement(String weName) throws NoSuchFieldException, IllegalAccessException {
         // use reflection technique
         Field field = somePageObject.getClass().getDeclaredField(weName);
         field.setAccessible(true);

@@ -1,4 +1,4 @@
-package com.epam.ex1.pageObjects;
+package com.epam.ex1.PageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Keys;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.epam.ex1.setup.BaseTest.getPo;
+import static com.epam.ex1.setup.BaseTest.getPageObject;
 
 public class WebPageObject {
 
@@ -28,8 +28,8 @@ public class WebPageObject {
 
     public static void enterSearchData(String data)
             throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        getPo().getWelement("searchInput").sendKeys(data);
-        getPo().getWelement("searchInput").sendKeys(Keys.ENTER);
+        getPageObject().getWebElement("searchInput").sendKeys(data);
+        getPageObject().getWebElement("searchInput").sendKeys(Keys.ENTER);
     }
 
     public static List<String> getResults() {

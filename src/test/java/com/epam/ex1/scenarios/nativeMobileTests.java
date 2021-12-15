@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.epam.ex1.setup.BaseTest;
 
-import static com.epam.ex1.pageObjects.NativePageObject.*;
+import static com.epam.ex1.PageObjects.NativePageObject.*;
 
 public class nativeMobileTests extends BaseTest {
 
