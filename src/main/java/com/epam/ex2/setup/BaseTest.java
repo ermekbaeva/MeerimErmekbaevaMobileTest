@@ -1,9 +1,9 @@
 package com.epam.ex2.setup;
 
-import com.epam.ex2.pageObjects.PageObject;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
+import com.epam.ex2.PageObjects.PageObject;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -14,25 +14,25 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest implements IDriver {
 
     private static AppiumDriver appiumDriver; // singleton
-    static IPageObject po;
+    static IPageObject pageObject;
 
     @Override
     public AppiumDriver getDriver() {
         return appiumDriver;
     }
 
-    public static IPageObject getPo() {
-        return po;
+    public static IPageObject getPageObject() {
+        return pageObject;
     }
 
-    @Parameters({"platformName", "appType", "deviceName", "udid", "browserName", "app", "appPackage", "appActivity", "bundleId"})
+    @Parameters({"platformName", "appType", "deviceName", "udid", "browserName", "app"})
     @BeforeSuite(alwaysRun = true)
-    public void setUp(String platformName, String appType, @Optional("") String deviceName,
-                      @Optional("") String browserName, @Optional("") String app, @Optional("") String udid,
-                      @Optional("") String appPackage, @Optional("") String appActivity,
-                      @Optional("") String bundleId) throws Exception {
+    public void setUp(String platformName, String appType, String deviceName, @Optional("") String udid,
+                      @Optional("") String browserName, @Optional("") String app) throws Exception {
         System.out.println("Before: app type - " + appType);
-        setAppiumDriver(platformName, deviceName, udid, browserName, app,  appPackage, appActivity, bundleId);
+        String token = "3TPIDN0MCoyayKM14X1d110S90Ycfy8nMDOQYU+UYrFAKivjNIdbHwhQotqz6fFLHGxIDUCAGIH3weWcv02dDrJZ23ZItu+I0H7u5l/w2qTKVQ1TI2XVtlnEf9Y5PDncBrQ0bgq7QOYj7Ig+W3hw1u9ikEZ2VHtBM7uG10l1YE5tMe9xfrt+3IPVs79soL+9cxkJjZpVPGDUdB66nggHVVwyjD+6zTl8hb9pNNoyL5lOqDn0w2OLeJXoeCIo1RLgXzUc7BXfL2Azim05mA/L2jnPveSweA2ZWd/IdIE90cAWvUYiNQdg8/8ztF/twmlEEKOcOqegXNIt2WSMqduqh0VL6YUyO1GXT17O73TAXrMgT+G5mieNO7ZQ9xTezNzGG4a+CVZDtypJXntgRiQ3E7NP2eyXV7jL8Sq27JOw8kp/NcCJmaYuPJLcKJeaobLUmpc9TWOyFHaBLZ08bjeVDmn7/2etjCIh9Ubc/4ANhborbO4wa/BqFcKwsmLhjhiXBQqM8cC2wxZuiU7FI0ERQ9HxGcLztlfEf7X9geMRbaL9uMwixiUbv5xxnws0opcY3Jy+1kFQReo8mF8T5/akRBJCwwdgYOrc9BozStHH0Jg3R0kF3pX0oaEO4VrNnFdr8/stN0zg3Pk5cmPGHRro5KTAd3gc/oTtl3aJjPl7QkKyTYc1iwGGTv706deIkFT13hLZbGaiD6XDpnArgTkemq2/RDqeTxf9lFjatPLhZQrlPFtfgm0Rc0hwnI/pG90XKxeu2EeLv/8eYO2VXfgiiEfIlPJUW0aw1FIcwjRJR68mGmyybb3qtFmKqkFtx/vgP72tG4pzSDugWqa79SQIlDUnQdjt1ZBpTNLmSgMJToUEJXimpTBCcNkJI4dLejoYG0Q51+ahZgfJv02IBRN7KzQ";
+        System.out.println(URLEncoder.encode(token, "UTF-8"));
+        setAppiumDriver(platformName, deviceName,udid, browserName, app);
         setPageObject(appType, appiumDriver);
     }
 
@@ -42,26 +42,19 @@ public class BaseTest implements IDriver {
         appiumDriver.closeApp();
     }
 
-    private void setAppiumDriver(String platformName, String deviceName, String udid, String browserName, String app,
-                                 String appPackage, String appActivity, String bundleId) {
+    private void setAppiumDriver(String platformName, String deviceName, String udid, String browserName, String app) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         //mandatory Android capabilities
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("udid", udid);
 
-        capabilities.setCapability("browserName", browserName);
-        capabilities.setCapability("chromedriverDisableBuildCheck", "true");
-
         if (app.endsWith(".apk")) {
             capabilities.setCapability("app", (new File(app)).getAbsolutePath());
         }
 
-
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", appActivity);
-
-        capabilities.setCapability("bundleId", bundleId);
+        capabilities.setCapability("browserName", browserName);
+        capabilities.setCapability("chromedriverDisableBuildCheck", "true");
 
         try {
             appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);
@@ -75,7 +68,6 @@ public class BaseTest implements IDriver {
     }
 
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
-        po = new PageObject(appType, appiumDriver);
+        pageObject = new PageObject(appType, appiumDriver);
     }
-
 }

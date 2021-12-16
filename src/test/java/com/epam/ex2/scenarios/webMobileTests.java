@@ -6,15 +6,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.epam.ex2.setup.BaseTest;
 
-import static com.epam.ex2.pageObjects.WebPageObject.enterSearchData;
-import static com.epam.ex2.pageObjects.WebPageObject.getResults;
+import static com.epam.ex2.PageObjects.WebPageObject.*;
 
 public class webMobileTests extends BaseTest {
 
     @Parameters({"searchData"})
-    @Test(groups = {"web"}, description = "Make sure that we've opened IANA homepage")
+    @Test(groups = {"web"}, description = "Make sure that we've get valid search results")
     public void simpleWebTest(String searchData) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        System.out.println("begin");
         getDriver().get("http://www.google.com"); // open Google homepage
 
         // Make sure that page has been loaded completely

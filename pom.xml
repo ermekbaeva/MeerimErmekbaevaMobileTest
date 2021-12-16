@@ -12,12 +12,12 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>7.6.0</version>
+            <version>7.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>7.1.0</version>
         </dependency>
     </dependencies>
 
@@ -32,7 +32,6 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <!--<ts.appium>http://localhost:4723/wd/hub</ts.appium>-->
                         <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
@@ -40,19 +39,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <token>3TPIDN0MCoyayKM14X1d110S90Ycfy8nMDOQYU%2BUYrFAKivjNIdbHwhQotqz6fFLHGxIDUCAGIH3weWcv02dDrJZ23ZItu%2BI0H7u5l%2Fw2qTKVQ1TI2XVtlnEf9Y5PDncBrQ0bgq7QOYj7Ig%2BW3hw1u9ikEZ2VHtBM7uG10l1YE5tMe9xfrt%2B3IPVs79soL%2B9cxkJjZpVPGDUdB66nggHVVwyjD%2B6zTl8hb9pNNoyL5lOqDn0w2OLeJXoeCIo1RLgXzUc7BXfL2Azim05mA%2FL2jnPveSweA2ZWd%2FIdIE90cAWvUYiNQdg8%2F8ztF%2FtwmlEEKOcOqegXNIt2WSMqduqh0VL6YUyO1GXT17O73TAXrMgT%2BG5mieNO7ZQ9xTezNzGG4a%2BCVZDtypJXntgRiQ3E7NP2eyXV7jL8Sq27JOw8kp%2FNcCJmaYuPJLcKJeaobLUmpc9TWOyFHaBLZ08bjeVDmn7%2F2etjCIh9Ubc%2F4ANhborbO4wa%2FBqFcKwsmLhjhiXBQqM8cC2wxZuiU7FI0ERQ9HxGcLztlfEf7X9geMRbaL9uMwixiUbv5xxnws0opcY3Jy%2B1kFQReo8mF8T5%2FakRBJCwwdgYOrc9BozStHH0Jg3R0kF3pX0oaEO4VrNnFdr8%2FstN0zg3Pk5cmPGHRro5KTAd3gc%2FoTtl3aJjPl7QkKyTYc1iwGGTv706deIkFT13hLZbGaiD6XDpnArgTkemq2%2FRDqeTxf9lFjatPLhZQrlPFtfgm0Rc0hwnI%2FpG90XKxeu2EeLv%2F8eYO2VXfgiiEfIlPJUW0aw1FIcwjRJR68mGmyybb3qtFmKqkFtx%2FvgP72tG4pzSDugWqa79SQIlDUnQdjt1ZBpTNLmSgMJToUEJXimpTBCcNkJI4dLejoYG0Q51%2BahZgfJv02IBRN7KzQ
-        </token>
-    </properties>
 
     <profiles>
         <profile>
@@ -78,11 +71,15 @@
         <profile>
             <id>cloudWeb</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <suite.file>./src/test/resources/com.epam.ex2/cloudWebTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
+
+    <properties>
+        <token>3TPIDN0MCoyayKM14X1d110S90Ycfy8nMDOQYU%2BUYrFAKivjNIdbHwhQotqz6fFLHGxIDUCAGIH3weWcv02dDrJZ23ZItu%2BI0H7u5l%2Fw2qTKVQ1TI2XVtlnEf9Y5PDncBrQ0bgq7QOYj7Ig%2BW3hw1u9ikEZ2VHtBM7uG10l1YE5tMe9xfrt%2B3IPVs79soL%2B9cxkJjZpVPGDUdB66nggHVVwyjD%2B6zTl8hb9pNNoyL5lOqDn0w2OLeJXoeCIo1RLgXzUc7BXfL2Azim05mA%2FL2jnPveSweA2ZWd%2FIdIE90cAWvUYiNQdg8%2F8ztF%2FtwmlEEKOcOqegXNIt2WSMqduqh0VL6YUyO1GXT17O73TAXrMgT%2BG5mieNO7ZQ9xTezNzGG4a%2BCVZDtypJXntgRiQ3E7NP2eyXV7jL8Sq27JOw8kp%2FNcCJmaYuPJLcKJeaobLUmpc9TWOyFHaBLZ08bjeVDmn7%2F2etjCIh9Ubc%2F4ANhborbO4wa%2FBqFcKwsmLhjhiXBQqM8cC2wxZuiU7FI0ERQ9HxGcLztlfEf7X9geMRbaL9uMwixiUbv5xxnws0opcY3Jy%2B1kFQReo8mF8T5%2FakRBJCwwdgYOrc9BozStHH0Jg3R0kF3pX0oaEO4VrNnFdr8%2FstN0zg3Pk5cmPGHRro5KTAd3gc%2FoTtl3aJjPl7QkKyTYc1iwGGTv706deIkFT13hLZbGaiD6XDpnArgTkemq2%2FRDqeTxf9lFjatPLhZQrlPFtfgm0Rc0hwnI%2FpG90XKxeu2EeLv%2F8eYO2VXfgiiEfIlPJUW0aw1FIcwjRJR68mGmyybb3qtFmKqkFtx%2FvgP72tG4pzSDugWqa79SQIlDUnQdjt1ZBpTNLmSgMJToUEJXimpTBCcNkJI4dLejoYG0Q51%2BahZgfJv02IBRN7KzQ</token>
+    </properties>
 </project>

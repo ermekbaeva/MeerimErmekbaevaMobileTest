@@ -3,13 +3,12 @@
     <parameter name="appType" value="native"></parameter>
     <parameter name="deviceName" value="emulator-5554"></parameter>
     <parameter name="platformName" value="Android"></parameter>
-    <parameter name="appPackage" value="platkovsky.alexey.epamtestapp"></parameter>
-    <parameter name="appActivity" value="activities.LoginActivity"></parameter>
+    <parameter name="app" value="./src/main/resources/EPAMTestApp.apk"></parameter>
     <parameter name="email" value="ermekbaevameerim@gmail.com"></parameter>
     <parameter name="username" value="meerim"></parameter>
     <parameter name="password" value="12345678"></parameter>
     <parameter name="descriptionPage" value="BudgetActivity"></parameter>
-    <test name="Cloud native tests">
+    <test name="Native tests">
         <groups>
             <run>
                 <include name="native"/>

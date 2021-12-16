@@ -1,17 +1,15 @@
-package com.epam.ex2.pageObjects;
+package com.epam.ex2.PageObjects;
 
 import com.epam.ex2.setup.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class NativePageObject extends BaseTest {
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/email_sign_in_button")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Sign In']")
     WebElement signInButton;
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_button")
     WebElement registerButton;
@@ -39,22 +37,22 @@ public class NativePageObject extends BaseTest {
     }
 
     public static void registerNewUser(String email, String username, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        getPo().getWelement("registerButton").click();
-        getPo().getWelement("emailInput").sendKeys(email);
-        getPo().getWelement("usernameInput").sendKeys(username);
-        getPo().getWelement("passwordInput").sendKeys(password);
-        getPo().getWelement("confirmPasswordInput").sendKeys(password);
-        getPo().getWelement("confirmAgreementsCheckbox").click();
-        getPo().getWelement("registerNewAccButton").click();
+        getPageObject().getWebElement("registerButton").click();
+        getPageObject().getWebElement("emailInput").sendKeys(email);
+        getPageObject().getWebElement("usernameInput").sendKeys(username);
+        getPageObject().getWebElement("passwordInput").sendKeys(password);
+        getPageObject().getWebElement("confirmPasswordInput").sendKeys(password);
+        getPageObject().getWebElement("confirmAgreementsCheckbox").click();
+        getPageObject().getWebElement("registerNewAccButton").click();
     }
 
     public static void login(String email, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        getPo().getWelement("loginEmailInput").sendKeys(email);
-        getPo().getWelement("loginPasswordInput").sendKeys(password);
-        getPo().getWelement("signInButton").click();
+        getPageObject().getWebElement("loginEmailInput").sendKeys(email);
+        getPageObject().getWebElement("loginPasswordInput").sendKeys(password);
+        getPageObject().getWebElement("signInButton").click();
     }
 
     public static WebElement getDescriptionOfPage() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        return getPo().getWelement("pageDescription");
+        return getPageObject().getWebElement("pageDescription");
     }
 }
