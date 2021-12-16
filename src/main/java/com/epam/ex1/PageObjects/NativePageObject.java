@@ -4,8 +4,10 @@ import com.epam.ex1.setup.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NativePageObject extends BaseTest {
 
@@ -52,7 +54,9 @@ public class NativePageObject extends BaseTest {
         getPageObject().getWebElement("signInButton").click();
     }
 
-    public static WebElement getDescriptionOfPage() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        return getPageObject().getWebElement("pageDescription");
+    public static String getDescriptionOfPage() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+        return getWebDriverWait()
+                .ignoring(StaleElementReferenceException.class)
+                .until(ExpectedConditions.visibilityOf(getPageObject().getWebElement("pageDescription"))).getText();
     }
 }

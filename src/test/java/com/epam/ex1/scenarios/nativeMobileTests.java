@@ -1,13 +1,11 @@
 package com.epam.ex1.scenarios;
 
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.epam.ex1.setup.BaseTest;
 
 import static com.epam.ex1.PageObjects.NativePageObject.*;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class nativeMobileTests extends BaseTest {
 
@@ -19,12 +17,8 @@ public class nativeMobileTests extends BaseTest {
         registerNewUser(email, username, password);
         login(email, password);
 
-        new WebDriverWait(getDriver(), 10)
-                .ignoring(StaleElementReferenceException.class)
-                .until(ExpectedConditions.visibilityOf(getDescriptionOfPage()));
-
         //assert that on BudgetActivity page
-        assert (getDescriptionOfPage().getText().equals(decriptionPage));
+        assertEquals(getDescriptionOfPage(), decriptionPage);
 
         System.out.println("Simplest Android native test done");
     }

@@ -2,6 +2,7 @@ package com.epam.ex1.setup;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import com.epam.ex1.PageObjects.PageObject;
 
@@ -64,5 +65,9 @@ public class BaseTest implements IDriver {
 
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
         pageObject = new PageObject(appType, appiumDriver);
+    }
+
+    public static WebDriverWait getWebDriverWait() {
+         return new WebDriverWait(appiumDriver, 10L);
     }
 }

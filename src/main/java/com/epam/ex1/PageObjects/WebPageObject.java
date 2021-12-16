@@ -1,17 +1,17 @@
 package com.epam.ex1.PageObjects;
 
+import com.epam.ex1.setup.BaseTest;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.epam.ex1.setup.BaseTest.getPageObject;
 
-public class WebPageObject {
+public class WebPageObject extends BaseTest {
 
     @FindBy(css = ".gLFyf")
     WebElement searchInput;
@@ -33,6 +33,8 @@ public class WebPageObject {
     }
 
     public static List<String> getResults() {
+        getWebDriverWait().until(
+                wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
         return resultLinks.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
