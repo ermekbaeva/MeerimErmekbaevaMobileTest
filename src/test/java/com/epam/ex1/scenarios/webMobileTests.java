@@ -19,6 +19,6 @@ public class webMobileTests extends BaseTest {
         assertTrue(getResults().stream().anyMatch(str -> str.trim().contains(searchData)));
 
         // Log that test finished
-        System.out.println("Site opening done");
+        System.out.println("Search results were found");
     }
 }
