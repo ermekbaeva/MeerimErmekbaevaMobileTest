@@ -11,7 +11,8 @@ public class webMobileTests extends BaseTest {
 
     @Parameters({"searchData"})
     @Test(groups = {"web"}, description = "Make sure that we've get valid search results")
-    public void simpleWebTest(String searchData) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public void simpleWebTest(String searchData)
+            throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         getDriver().get("http://www.google.com"); // open Google homepage
 
         enterSearchData(searchData);

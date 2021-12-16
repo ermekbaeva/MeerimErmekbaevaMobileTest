@@ -5,7 +5,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import com.epam.ex1.PageObjects.PageObject;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,7 +26,8 @@ public class BaseTest implements IDriver {
 
     @Parameters({"platformName", "appType", "deviceName", "browserName", "app"})
     @BeforeSuite(alwaysRun = true)
-    public void setUp(String platformName, String appType, String deviceName, @Optional("") String browserName, @Optional("") String app) throws Exception {
+    public void setUp(String platformName, String appType, String deviceName, @Optional("") String browserName,
+                      @Optional("") String app) throws Exception {
         System.out.println("Before: app type - " + appType);
         setAppiumDriver(platformName, deviceName, browserName, app);
         setPageObject(appType, appiumDriver);

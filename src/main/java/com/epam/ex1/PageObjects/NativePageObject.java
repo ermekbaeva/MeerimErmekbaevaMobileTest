@@ -38,7 +38,8 @@ public class NativePageObject extends BaseTest {
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public static void registerNewUser(String email, String username, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public static void registerNewUser(String email, String username, String password)
+            throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         getPageObject().getWebElement("registerButton").click();
         getPageObject().getWebElement("emailInput").sendKeys(email);
         getPageObject().getWebElement("usernameInput").sendKeys(username);
@@ -48,15 +49,18 @@ public class NativePageObject extends BaseTest {
         getPageObject().getWebElement("registerNewAccButton").click();
     }
 
-    public static void login(String email, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public static void login(String email, String password)
+            throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         getPageObject().getWebElement("loginEmailInput").sendKeys(email);
         getPageObject().getWebElement("loginPasswordInput").sendKeys(password);
         getPageObject().getWebElement("signInButton").click();
     }
 
-    public static String getDescriptionOfPage() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public static String getDescriptionOfPage()
+            throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         return getWebDriverWait()
                 .ignoring(StaleElementReferenceException.class)
-                .until(ExpectedConditions.visibilityOf(getPageObject().getWebElement("pageDescription"))).getText();
+                .until(ExpectedConditions.visibilityOf(getPageObject().getWebElement("pageDescription")))
+                .getText();
     }
 }

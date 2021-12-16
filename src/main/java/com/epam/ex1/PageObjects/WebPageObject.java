@@ -33,8 +33,8 @@ public class WebPageObject extends BaseTest {
     }
 
     public static List<String> getResults() {
-        getWebDriverWait().until(
-                wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+        getWebDriverWait().until(wd -> ((JavascriptExecutor) wd)
+                .executeScript("return document.readyState").equals("complete"));
         return resultLinks.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());

@@ -3,7 +3,6 @@ package com.epam.ex1.scenarios;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.epam.ex1.setup.BaseTest;
-
 import static com.epam.ex1.PageObjects.NativePageObject.*;
 import static org.testng.AssertJUnit.assertEquals;
 
