@@ -4,7 +4,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.epam.ex2.setup.BaseTest;
 
-import static com.epam.ex2.PageObjects.NativePageObject.*;
+import static com.epam.ex2.PageObjects.LoginNativePageObject.*;
+import static com.epam.ex2.PageObjects.RegistrationNativePageObject.registerNewUser;
 import static com.epam.ex2.util.RandomData.*;
 import static org.testng.AssertJUnit.assertEquals;
 

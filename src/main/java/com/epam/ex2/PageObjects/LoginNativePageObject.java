@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class NativePageObject extends BaseTest {
+public class LoginNativePageObject extends BaseTest {
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Sign In']")
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/email_sign_in_button")
@@ -46,23 +46,12 @@ public class NativePageObject extends BaseTest {
     @AndroidFindBy(xpath = "//*[@resource-id='platkovsky.alexey.epamtestapp:id/action_bar']//android.widget.TextView")
     WebElement pageDescription;
 
-    public NativePageObject(AppiumDriver appiumDriver) {
+    public LoginNativePageObject(AppiumDriver appiumDriver) {
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
     public static void goToRegistrationPage() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         getPageObject().getWebElement("registerButton").click();
-    }
-
-    public static void registerNewUser(String email, String username, String password)
-            throws NoSuchFieldException, IllegalAccessException, InstantiationException {
-        getPageObject().getWebElement("emailInput").sendKeys(email);
-        getPageObject().getWebElement("usernameInput").sendKeys(username);
-        getPageObject().getWebElement("passwordInput").sendKeys(password);
-        getPageObject().getWebElement("confirmPasswordInput").sendKeys(password);
-        getPageObject().getWebElement("confirmAgreementsCheckbox").click();
-        getPageObject().getWebElement("registerNewAccButton").click();
-        //getPageObject().getWebElement("registerNewAccButton").click();
     }
 
     public static void login(String email, String password) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
