@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Native mobile testing Suite">
+    <parameter name="appType" value="native"></parameter>
+    <parameter name="udid" value="00008020-00094961369A002E"></parameter>
+    <parameter name="platformName" value="iOS"></parameter>
+    <parameter name="bundleId" value="com.epam.EPAMTestApp.ii"></parameter>
+    <parameter name="descriptionPage" value="Budget"></parameter>
+    <test name="Native tests">
+        <groups>
+            <run>
+                <include name="native"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.epam.ex2.scenarios"/>
+        </packages>
+    </test>
+</suite>

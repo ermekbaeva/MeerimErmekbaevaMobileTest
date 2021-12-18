@@ -3,7 +3,6 @@ package com.epam.ex2.PageObjects;
 import com.epam.ex2.setup.IPageObject;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
-
 import java.lang.reflect.Field;
 
 public class PageObject implements IPageObject {
