@@ -40,5 +40,8 @@ public class RegistrationNativePageObject extends BaseTest {
         getPageObject().getWebElement("confirmPasswordInput").sendKeys(password);
         getPageObject().getWebElement("confirmAgreementsCheckbox").click();
         getPageObject().getWebElement("registerNewAccButton").click();
+        if (getPageObject().getWebElement("registerNewAccButton").isDisplayed()) {
+            getPageObject().getWebElement("registerNewAccButton").click();
+        }
     }
 }
