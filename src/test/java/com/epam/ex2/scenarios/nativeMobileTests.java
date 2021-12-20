@@ -11,12 +11,13 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class nativeMobileTests extends BaseTest {
 
-    @Parameters({"descriptionPage"})
+    @Parameters({"descriptionPage", "platformName"})
     @Test(groups = {"native"}, description = "This test register and sign in")
-    public void simpleNativeTest(String descriptionPage)
+    public void simpleNativeTest(String descriptionPage, String platformName)
             throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         goToRegistrationPage();
         registerNewUser(email, username, password);
+        if (platformName.equals("iOS")) getPageObject().getWebElement("registerNewAccButton").click();
         login(email, password);
 
         //assert that on BudgetActivity page
