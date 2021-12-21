@@ -32,7 +32,7 @@ public class RegistrationNativePageObject extends BaseTest {
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public static void registerNewUser(String email, String username, String password)
+    public static void registerNewUser(String email, String username, String password, String platformName)
             throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         getPageObject().getWebElement("emailInput").sendKeys(email);
         getPageObject().getWebElement("usernameInput").sendKeys(username);
@@ -40,5 +40,7 @@ public class RegistrationNativePageObject extends BaseTest {
         getPageObject().getWebElement("confirmPasswordInput").sendKeys(password);
         getPageObject().getWebElement("confirmAgreementsCheckbox").click();
         getPageObject().getWebElement("registerNewAccButton").click();
+        //on iOS device "register new acc" button works only after second click
+        if (platformName.equals("iOS")) getPageObject().getWebElement("registerNewAccButton").click();
     }
 }
