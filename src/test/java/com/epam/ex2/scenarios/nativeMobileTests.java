@@ -17,6 +17,7 @@ public class nativeMobileTests extends BaseTest {
             throws NoSuchFieldException, IllegalAccessException, InstantiationException {
         goToRegistrationPage();
         registerNewUser(email, username, password);
+        //on iOS device "register new acc" button works only after second click
         if (platformName.equals("iOS")) getPageObject().getWebElement("registerNewAccButton").click();
         login(email, password);
 
